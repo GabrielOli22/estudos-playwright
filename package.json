@@ -1,0 +1,17 @@
+{
+  "name": "project-playwright",
+  "version": "1.0.0",
+  "description": "Automamated Software testing with Playwright",
+  "license": "ISC",
+  "author": "gabriel",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {},
+  "dependencies": {
+    "playwright-test": "^14.1.11"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.54.2",
+    "@types/node": "^24.1.0"
+  }
+}
