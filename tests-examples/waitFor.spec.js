@@ -16,13 +16,13 @@ test('Waiting the page load', async ({ page }) => {
   await expect(page).toHaveTitle(/Shop/);
 
   // Fill in the username and password fields
-  await page.getByTestId("userEmail").fill(validUsername);
-  await page.getByTestId("userPassword").fill(validPassword);
+  await page.locator("#userEmail").fill(validUsername);
+  await page.locator("userPassword").fill(validPassword);
 
   // Click on the login button
   await page.getByRole("button", { name: "login" }).click();
 
-  // wait for element to be visible
+  // wait for the first element to be visible
   await page.locator(".card-body b").first().waitFor({ state: 'visible' });
     
   // this metod now is deprecated
