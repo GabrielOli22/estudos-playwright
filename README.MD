@@ -36,7 +36,7 @@ npx playwright test tests/tests-examples/example.spec.js -g "has title"
     npx playwright test --project chorme
 
 ## Run the test with the browser open
-    npx playwright test                         
+    npx playwright test--headed                   
 
 ## Run the test with debuggin 
     npx playwright test --debug

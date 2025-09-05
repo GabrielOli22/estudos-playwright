@@ -1,45 +1,21 @@
-// @ts-check
-import { test, expect } from "@playwright/test";
-
-// Define valid credentials for login
-// These credentials are used for the valid login test case
-const validUsername = "rahulshettyacademy";
-const validPassword = "learning";
+// line 28
+import { test, expect } from '@playwright/test';
 
 test.beforeEach(async ({ page }) => {
   // Navigate to the base URL before each test
   await page.goto("https://rahulshettyacademy.com/loginpagePractise/");
 });
 
-test("Invalid acess login and user", async ({ page }) => {
-  // Expect a title "to contain" a substring.
-  await expect(page).toHaveTitle(/LoginPage/);
+// Define valid credentials for login
+// These credentials are used for the valid login test case
+const validUsername = "rahulshettyacademy";
+const validPassword = "learning";
+const userRole = "Consultant";
 
-  // Fill in the username and password fields
-  await page.locator("#username").fill("Username");
-  await page.locator("#password").fill("Password");
-
-  // Click on the login button
-  await page.getByRole("button", { name: "Sign In" }).click();
-
-  // Verify the error message
-  await expect(page.locator("[style*='display: block']")).toBeVisible();
-  await expect(page.locator("[style*='display: block']")).toHaveText(
-    "Incorrect username/password."
-  );
-
-  // Alternatively, you can use the following to check if the error message is visible
-  // exctract the text content of the error message
-  const errorMessage = await page
-    .locator("[style*='display: block']")
-    .textContent();
-  expect(errorMessage).toBe("Incorrect username/password.");
-  console.log("Error message:", errorMessage);
-});
-
-test("Valid acess login and user", async ({ page }) => {
+test("Select dropdown", async ({ page }) => {
   const user = page.locator("#username");
   const password = page.locator("#password");
+  const dropdown = page.locator("select.form-control");
   const loginButton = page.getByRole("button", { name: "Sign In" });
 
   const cardTitle = page.locator(".card-body a");
@@ -47,6 +23,22 @@ test("Valid acess login and user", async ({ page }) => {
   // Fill in the username and password fields with valid credentials
   await user.fill(validUsername);
   await password.fill(validPassword);
+
+  // Select class option from dropdown
+  await dropdown.selectOption(userRole);
+
+  // await page.pause();
+
+  // select the first option
+  // await page.locator(".radiotextsty").first().click();
+  
+  // select the last option
+  await page.locator(".radiotextsty").last().click();
+
+  // Handle the alert popup
+  if (page.locator(".modal-body").isVisible()) {
+    page.locator("#okayBtn").click(); 
+  }
 
   // Click on the login button
   await loginButton.click();

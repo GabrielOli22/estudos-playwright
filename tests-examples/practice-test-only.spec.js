@@ -8,8 +8,8 @@ test('Browser context playwright test', async ({ browser }) =>
     await page.goto("https://playwright.dev/");
   });
 
-// execute only this test
-test.only('Go to Web page', async ({ page }) => 
+// execute only this test.only
+test('Go to Web page', async ({ page }) => 
   {
     // navigate to the page
     await page.goto("https://google.com");

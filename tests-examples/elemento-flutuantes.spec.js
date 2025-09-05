@@ -1,7 +1,6 @@
 // line 36
 import { test, expect } from "@playwright/test";
 
-
 test("Cadastrar um lead na fila de espera", async ({ page }) => {
  // go to the page
   await page.goto("http://localhost:3000/");
@@ -50,10 +49,10 @@ test("Cadastrar um lead na fila de espera", async ({ page }) => {
 
   // element with class "toast" should be hidden after 5 seconds
   await expect(page.locator("div[class='toast']")).toBeHidden({
-    timeout: 2000,
+    timeout: 5000,
   });
 
-  await page.waitForTimeout(5000);
+  // await page.waitForTimeout(5000);
 
 });
 

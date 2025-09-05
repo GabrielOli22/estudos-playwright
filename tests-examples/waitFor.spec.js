@@ -17,7 +17,7 @@ test('Waiting the page load', async ({ page }) => {
 
   // Fill in the username and password fields
   await page.locator("#userEmail").fill(validUsername);
-  await page.locator("userPassword").fill(validPassword);
+  await page.locator("#userPassword").fill(validPassword);
 
   // Click on the login button
   await page.getByRole("button", { name: "login" }).click();
